@@ -1,21 +1,20 @@
 import { useMemo } from 'react';
+import { useReservations } from '../../context/reservationContext';
 import { Reservation, ReservationStatus } from '../../types/reservation';
 import './ReservationBoard.css';
 import ReservationCard from './ReservationCard/ReservationCard';
 
-interface ReservationBoardProps {
-  reservations: Reservation[];
-}
+const ReservationBoard = () => {
+  const { reservations } = useReservations();
 
-const ReservationBoard = ({ reservations }: ReservationBoardProps) => {
   const groupedReservations = useMemo(() => {
     const groups: Record<ReservationStatus, Reservation[]> = {
-      Reserved: [],
+      'Reserved': [],
       'Due In': [],
       'In House': [],
       'Due Out': [],
       'Checked Out': [],
-      Canceled: [],
+      'Canceled': [],
       'No Show': []
     };
 
@@ -57,9 +56,7 @@ const ReservationBoard = ({ reservations }: ReservationBoardProps) => {
                 statusColor={statusColors[reservation.status]}
               />
             ))}
-            {reservationList.length === 0 && (
-              <div className='empty-status'>Brak rezerwacji</div>
-            )}
+            {reservationList.length === 0 && <div className='empty-status'>Brak rezerwacji</div>}
           </div>
         </div>
       ))}

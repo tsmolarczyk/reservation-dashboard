@@ -5,6 +5,7 @@ import App from './App.tsx';
 import AddReservation from './components/AddReservation/AddReservation.tsx';
 import EditReservation from './components/EditReservation/EditReservation.tsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.tsx';
+import { ReservationProvider } from './context/ReservationProvider.tsx';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ReservationProvider>
+      <RouterProvider router={router} />
+    </ReservationProvider>
   </StrictMode>
 );
