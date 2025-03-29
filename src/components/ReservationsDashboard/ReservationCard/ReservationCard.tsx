@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Reservation } from '../../../types/reservation';
 import { formatDate } from '../../../utils/dateFormatters';
 import './ReservationCard.css';
@@ -11,6 +12,26 @@ const ReservationCard = ({
   reservation,
   statusColor
 }: ReservationCardProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className='reservation-card'>
       <div
@@ -20,8 +41,16 @@ const ReservationCard = ({
       <div className='card-content'>
         <div className='card-header'>
           <h3 className='guest-name'>{reservation.guestName}</h3>
-          <div className='action-button'>
-            <button className='btn-action'>⋮</button>
+          <div className='action-button' ref={menuRef}>
+            <button className='btn-action' onClick={toggleDropdown}>
+              ⋮
+            </button>
+            {isMenuOpen && (
+              <div className='dropdown-menu'>
+                <button className='dropdown-item'>Checked Out</button>
+                <button className='dropdown-item'>Cancel</button>
+              </div>
+            )}
           </div>
         </div>
 
