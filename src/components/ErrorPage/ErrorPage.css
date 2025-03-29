@@ -1,0 +1,22 @@
+.error-page {
+  text-align: center;
+  margin-top: 5rem;
+  padding: 0 1rem;
+}
+
+.error-page h1 {
+  color: #e74c3c;
+  margin-bottom: 2rem;
+}
+
+.error-page a {
+  color: white;
+  background-color: #3498db;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.error-page a:hover {
+  color: white;
+  background-color: #2980b9;
+}
