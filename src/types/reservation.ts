@@ -1,10 +1,10 @@
-export type ReservationStatus = 
-  | 'Reserved' 
-  | 'Due In' 
-  | 'In House' 
-  | 'Due Out' 
-  | 'Checked Out' 
-  | 'Canceled' 
+export type ReservationStatus =
+  | 'Reserved'
+  | 'Due In'
+  | 'In House'
+  | 'Due Out'
+  | 'Checked Out'
+  | 'Canceled'
   | 'No Show';
 
 export interface Reservation {
@@ -16,7 +16,7 @@ export interface Reservation {
   roomNumber?: string;
   notes?: string;
   email?: string;
-} 
+}
 
 export interface ReservationResponse {
   id: string;

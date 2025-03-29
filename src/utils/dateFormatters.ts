@@ -5,4 +5,4 @@ export const formatDate = (dateString: string): string => {
     month: '2-digit',
     year: 'numeric'
   });
-}; 
+};

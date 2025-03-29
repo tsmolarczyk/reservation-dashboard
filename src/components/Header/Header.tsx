@@ -1,15 +1,14 @@
-import React from 'react';
 import './Header.css';
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
-    <header className="header">
-      <div className="header-content">
-        <div className="logo">
+    <header className='header'>
+      <div className='header-content'>
+        <div className='logo'>
           <h1>Dashboard Rezerwacji Hotelowych</h1>
         </div>
-        <div className="header-actions">
-          <div className="date-display">
+        <div className='header-actions'>
+          <div className='date-display'>
             {new Date().toLocaleDateString('pl-PL', {
               weekday: 'long',
               year: 'numeric',
@@ -23,4 +22,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header; 
+export default Header;

@@ -4,7 +4,9 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .reservation-card:hover {
@@ -109,4 +111,4 @@
   font-size: 0.75rem;
   color: #7f8c8d;
   font-style: italic;
-} 
+}

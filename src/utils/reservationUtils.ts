@@ -1,14 +1,28 @@
-import { Reservation, ReservationResponse, ReservationStatus } from '../types/reservation';
+import {
+  Reservation,
+  ReservationResponse,
+  ReservationStatus
+} from '../types/reservation';
 
 const isValidStatus = (status: string): status is ReservationStatus => {
-  return ['Reserved', 'Due In', 'In House', 'Due Out', 'Checked Out', 'Canceled', 'No Show'].includes(status);
+  return [
+    'Reserved',
+    'Due In',
+    'In House',
+    'Due Out',
+    'Checked Out',
+    'Canceled',
+    'No Show'
+  ].includes(status);
 };
 
-export const mapResponseObjectToReservation = (data: ReservationResponse): Reservation => {
+export const mapResponseObjectToReservation = (
+  data: ReservationResponse
+): Reservation => {
   if (!isValidStatus(data.status)) {
     throw new Error(`Nieprawidłowy status rezerwacji: ${data.status}`);
   }
-  
+
   return {
     id: data.id,
     guestName: data.guestName,
@@ -19,4 +33,4 @@ export const mapResponseObjectToReservation = (data: ReservationResponse): Reser
     notes: data.notes,
     email: data.email
   };
-}; 
+};
