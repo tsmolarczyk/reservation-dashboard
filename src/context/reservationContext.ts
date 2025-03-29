@@ -5,12 +5,14 @@ interface ReservationContextType {
   reservations: Reservation[];
   loading: boolean;
   updateReservation: (reservation: Reservation) => void;
+  removeReservation: (reservationId: string) => void;
 }
 
 export const ReservationContext = createContext<ReservationContextType>({
   reservations: [],
   loading: true,
-  updateReservation: () => {}
+  updateReservation: () => {},
+  removeReservation: () => {}
 });
 
 export const useReservations = () => {

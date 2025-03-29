@@ -13,7 +13,7 @@ interface ReservationCardProps {
 const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { updateReservation } = useReservations();
+  const { updateReservation, removeReservation } = useReservations();
 
   const availableStatusTransitions = getAvailableStatusTransitions(reservation.status);
   const hasAvailableStatusTransitions = availableStatusTransitions.length > 0;
@@ -27,6 +27,11 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
     updateReservation(updatedReservation);
     setIsMenuOpen(false);
   };
+
+  const handleRemoveReservation = (reservationId: string) => {
+    removeReservation(reservationId);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -50,6 +55,13 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
       <div className='card-content'>
         <div className='card-header'>
           <h3 className='guest-name'>{reservation.guestName}</h3>
+          <button
+            onClick={() => {
+              handleRemoveReservation(reservation.id);
+            }}
+          >
+            Remove
+          </button>
           {hasAvailableStatusTransitions && (
             <div className='action-button' ref={menuRef}>
               <button className='btn-action' onClick={toggleDropdown}>
