@@ -30,3 +30,19 @@
   color: #ecf0f1;
   text-align: right;
 }
+
+.add-reservation-button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  margin-right: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-reservation-button:hover {
+  background-color: #2ecc71;
+}
