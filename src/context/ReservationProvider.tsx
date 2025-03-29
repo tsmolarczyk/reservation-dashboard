@@ -21,9 +21,16 @@ export const ReservationProvider = ({ children }: { children: React.ReactNode })
     }, 800);
   }, []);
 
+  const updateReservation = (updatedReservation: Reservation) => {
+    setReservations((reservations) => {
+      return reservations.map((res) => (res.id === updatedReservation.id ? updatedReservation : res));
+    });
+  };
+
   const contextValue = {
     reservations,
-    loading
+    loading,
+    updateReservation
   };
 
   return <ReservationContext.Provider value={contextValue}>{children}</ReservationContext.Provider>;
