@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { MdDelete } from 'react-icons/md';
 import { useReservations } from '../../../context/reservationContext';
 import { Reservation, ReservationStatus } from '../../../types/reservation';
 import { formatDate } from '../../../utils/dateFormatters';
@@ -55,35 +56,38 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
       <div className='card-content'>
         <div className='card-header'>
           <h3 className='guest-name'>{reservation.guestName}</h3>
-          <button
-            onClick={() => {
-              handleRemoveReservation(reservation.id);
-            }}
-          >
-            Remove
-          </button>
-          {hasAvailableStatusTransitions && (
-            <div className='action-button' ref={menuRef}>
-              <button className='btn-action' onClick={toggleDropdown}>
-                ⋮
-              </button>
-              {isMenuOpen && (
-                <div className='dropdown-menu'>
-                  {availableStatusTransitions.map((status) => (
-                    <button
-                      key={status}
-                      className='dropdown-item'
-                      onClick={() => {
-                        handleStatusChange(status);
-                      }}
-                    >
-                      {status}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+          <div className='card-actions'>
+            {hasAvailableStatusTransitions && (
+              <div className='action-button' ref={menuRef}>
+                <button className='btn-action' onClick={toggleDropdown}>
+                  ⋮
+                </button>
+                {isMenuOpen && (
+                  <div className='dropdown-menu'>
+                    {availableStatusTransitions.map((status) => (
+                      <button
+                        key={status}
+                        className='dropdown-item'
+                        onClick={() => {
+                          handleStatusChange(status);
+                        }}
+                      >
+                        {status}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+            <button
+              className='btn-remove'
+              onClick={() => {
+                handleRemoveReservation(reservation.id);
+              }}
+            >
+              <MdDelete />
+            </button>
+          </div>
         </div>
 
         <div className='stay-dates'>
