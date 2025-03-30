@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { MdDelete, MdEdit } from 'react-icons/md';
+import { MdDelete, MdEdit, MdSwapHoriz } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { useReservations } from '../../../context/reservationContext';
 import { Reservation, ReservationStatus } from '../../../types/reservation';
@@ -20,6 +20,7 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
 
   const availableStatusTransitions = getAvailableStatusTransitions(reservation.status);
   const hasAvailableStatusTransitions = availableStatusTransitions.length > 0;
+  const canBeEdited = reservation.status === 'Reserved' || reservation.status === 'Due In';
 
   const handleStatusChange = (newStatus: ReservationStatus) => {
     const updatedReservation = {
@@ -67,8 +68,8 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
           <div className='card-actions'>
             {hasAvailableStatusTransitions && (
               <div className='action-button' ref={menuRef}>
-                <button className='btn-action' onClick={toggleDropdown}>
-                  ⋮
+                <button className='btn-status' data-testid='status-change-button' onClick={toggleDropdown}>
+                  <MdSwapHoriz />
                 </button>
                 {isMenuOpen && (
                   <div className='dropdown-menu'>
@@ -87,14 +88,16 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
                 )}
               </div>
             )}
-            <button
-              className='btn-edit'
-              onClick={() => {
-                handleEdit();
-              }}
-            >
-              <MdEdit />
-            </button>
+            {canBeEdited && (
+              <button
+                className='btn-edit'
+                onClick={() => {
+                  handleEdit();
+                }}
+              >
+                <MdEdit />
+              </button>
+            )}
             <button
               className='btn-remove'
               onClick={() => {

@@ -148,7 +148,8 @@
 }
 
 .btn-remove,
-.btn-edit {
+.btn-edit,
+.btn-status {
   background: none;
   border: none;
   cursor: pointer;
@@ -161,7 +162,12 @@
   justify-content: center;
 }
 
+.btn-status {
+  font-size: 1.1rem;
+}
+
 .btn-remove:hover,
-.btn-edit:hover {
+.btn-edit:hover,
+.btn-status:hover {
   color: #2c3e50;
 }

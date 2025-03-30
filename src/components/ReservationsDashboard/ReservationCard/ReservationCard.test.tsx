@@ -97,11 +97,13 @@ describe('ReservationCard', () => {
     };
 
     // Act
-    const { getByText } = render(
+    const { container } = render(
       <ReservationCard reservation={reservation} statusColor={statusColors[reservation.status]} />
     );
+    
     // Assert
-    expect(getByText('⋮')).toBeDefined();
+    const statusButton = container.querySelector('[data-testid="status-change-button"]');
+    expect(statusButton).not.toBeNull();
   });
 
   test('Should NOT display room number when roomNumber is not provided', () => {
