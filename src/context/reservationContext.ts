@@ -4,6 +4,7 @@ import { Reservation } from '../types/reservation';
 interface ReservationContextType {
   reservations: Reservation[];
   loading: boolean;
+  addReservation: (reservation: Reservation) => void;
   updateReservation: (reservation: Reservation) => void;
   removeReservation: (reservationId: string) => void;
 }
@@ -11,6 +12,7 @@ interface ReservationContextType {
 export const ReservationContext = createContext<ReservationContextType>({
   reservations: [],
   loading: true,
+  addReservation: () => {},
   updateReservation: () => {},
   removeReservation: () => {}
 });

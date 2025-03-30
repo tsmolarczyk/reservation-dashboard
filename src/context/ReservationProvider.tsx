@@ -31,9 +31,14 @@ export const ReservationProvider = ({ children }: { children: React.ReactNode })
     setReservations((reservations) => reservations.filter((res) => res.id !== reservationId));
   };
 
+  const addReservation = (newReservation: Reservation) => {
+    setReservations((reservations) => [...reservations, newReservation]);
+  };
+
   const contextValue = {
     reservations,
     loading,
+    addReservation,
     updateReservation,
     removeReservation
   };
