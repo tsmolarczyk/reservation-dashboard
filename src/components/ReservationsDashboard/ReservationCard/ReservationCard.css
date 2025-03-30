@@ -147,7 +147,8 @@
   margin-left: auto;
 }
 
-.btn-remove {
+.btn-remove,
+.btn-edit {
   background: none;
   border: none;
   cursor: pointer;
@@ -160,6 +161,7 @@
   justify-content: center;
 }
 
-.btn-remove:hover {
+.btn-remove:hover,
+.btn-edit:hover {
   color: #2c3e50;
 }

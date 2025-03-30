@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { MdDelete } from 'react-icons/md';
+import { MdDelete, MdEdit } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { useReservations } from '../../../context/reservationContext';
 import { Reservation, ReservationStatus } from '../../../types/reservation';
 import { formatDate } from '../../../utils/dateFormatters';
@@ -15,6 +16,7 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { updateReservation, removeReservation } = useReservations();
+  const navigate = useNavigate();
 
   const availableStatusTransitions = getAvailableStatusTransitions(reservation.status);
   const hasAvailableStatusTransitions = availableStatusTransitions.length > 0;
@@ -29,8 +31,14 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
     setIsMenuOpen(false);
   };
 
-  const handleRemoveReservation = (reservationId: string) => {
-    removeReservation(reservationId);
+  const handleRemoveReservation = (reservation: Reservation) => {
+    removeReservation(reservation.id);
+  };
+
+  const handleEdit = () => {
+    navigate(`/edit/${reservation.id}`, {
+      state: { reservation }
+    });
   };
 
   useEffect(() => {
@@ -80,9 +88,17 @@ const ReservationCard = ({ reservation, statusColor }: ReservationCardProps) => 
               </div>
             )}
             <button
+              className='btn-edit'
+              onClick={() => {
+                handleEdit();
+              }}
+            >
+              <MdEdit />
+            </button>
+            <button
               className='btn-remove'
               onClick={() => {
-                handleRemoveReservation(reservation.id);
+                handleRemoveReservation(reservation);
               }}
             >
               <MdDelete />
