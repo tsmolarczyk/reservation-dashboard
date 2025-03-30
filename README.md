@@ -1,13 +1,34 @@
 # Hotel Reservation Management System
 
-A hotel reservation management application built with React + TypeScript + Vite.
+A dashboard for managing hotel reservations implementing all the required functionality from the recruitment task.
 
-## Quick Start
+## Features
+
+The application allows:
+
+- Viewing reservations grouped by status
+- Adding new reservations with Reserved or Due In status
+- Deleting reservations
+- Editing guest information (for reservations with Reserved or Due In status)
+- Changing reservation status according to specific business rules
+
+## Technologies
+
+- React
+- TypeScript
+- Vite
+- React Router Dom
+- React Hook Form + Zod (form validation)
+- Vitest + React Testing Library (testing)
+- Prettier (code formatting)
+- ESLint (code quality)
+
+## Getting Started
 
 1. Clone the repository:
 
 ```bash
-git clone [your-repo-url]
+git clone [repository-url]
 ```
 
 2. Install dependencies:
@@ -16,7 +37,7 @@ git clone [your-repo-url]
 npm install
 ```
 
-3. Start the development server:
+3. Run the development server:
 
 ```bash
 npm run dev
@@ -29,31 +50,23 @@ The application will be available at `http://localhost:5173`
 - `npm run dev` - runs the app in development mode
 - `npm run build` - builds the app for production
 - `npm run lint` - checks code for potential errors
+- `npm test` - runs tests
 - `npm run preview` - locally preview production build
+- `npm run format` - formats code using Prettier
 
-# Zadanie
+## Potential Enhancements
 
-## Opis
+Future enhancements could include:
 
-Wcielasz się w programistę budującego rozwiązania dla branży hotelarskiej, od klienta otrzymałeś Dashboard rezerwacji z którego aktualnie korzysta w swoim hotelu, wraz z bazą danych w pliku json. Klient prosi Cię o dodanie kilku funkcji:
+- Confirmation popup for reservation deletion
+- Responsive design for mobile devices
+- Extended test coverage
+- Virtual rendering implementation for handling large numbers of reservations
+- Filtering and sorting functionality for the reservation list
+- Improved accessibility (a11y)
+- Internationalization (i18n)
+- Advanced loading indicators
 
-- Dodawanie rezerwacji - dostępny status początkowy to Reserved lub Due in (jeśli data przyjazdu nastąpi tego samego dnia)
-  - Akcja powinna zostać automatycznie wywołana po przejściu na link http://localhost:5173/add lub http://localhost:5173/#/add
-- Usuwanie Rezerwacji
-- Możliwość edycji danych gościa hotelowego takich jak imię i nazwisko, email, notatka - funkcja dostępna jeśli rezerwacja jest w statusie: „Reserved”, „Due In”
-  - Edycja powinna być wywołana po przejściu na link /edit/{reservationId} np. http://localhost:5173/edit/res-001 lub http://localhost:5173/#/edit/res-001
-- Przenoszenie rezerwacji pomiędzy statusami zgodnie z następującą logiką: - Reserved - Canceled - Due In - Due In - Canceled - No Show - In House - In House - Checked Out - Checked Out: - In House - Canceled - Reserved
-  Przykład:
-  Rezerwacjom w statusie Reserved można zmienić status na: Canceled lub Due In
-  Rezerwacjom w statusie In House można zmienić status na: Checked Out
+## Author
 
-Projektując rozwiązania pamiętaj o wydajności (rezerwacji może być kilka tysięcy) oraz użyteczności i łatwości obsługi.
-
-## Dodatkowe informacje
-
-Zmiany wprowadź samodzielnie, nie korzystaj z GenAI ani pomocy innych osób. Jeśli nie masz czasu, lub nie jesteś w stanie zaimplementować wszystkich wymagań prześlij nam to co udało Ci się zbudować.
-Rozwiązanie powinno być dostarczone w formie linku do Twojego repozytorium GitLab lub GitHub zawierającego historię commitów.
-
-## Czas
-
-Czas na rozwiązanie: 1 tydzień liczony od dnia przesłania zadania.
+Tomasz Smolarczyk
