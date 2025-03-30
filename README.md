@@ -1,4 +1,4 @@
-# Hotel Reservation Management System
+# Hotel Reservation Management Application
 
 A dashboard for managing hotel reservations implementing all the required functionality from the recruitment task.
 
@@ -9,7 +9,7 @@ The application allows:
 - Viewing reservations grouped by status
 - Adding new reservations with Reserved or Due In status
 - Deleting reservations
-- Editing guest information (for reservations with Reserved or Due In status)
+- Editing reservation information (for reservations with Reserved or Due In status)
 - Changing reservation status according to specific business rules
 
 ## Technologies
